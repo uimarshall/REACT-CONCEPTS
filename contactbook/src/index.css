@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+.hide-show i {
+    cursor: pointer;
+}
+
+.hide-show .delete-contact {
+    cursor: pointer;
+    color: red;
+    float: right;
+}
