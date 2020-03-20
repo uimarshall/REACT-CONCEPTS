@@ -11,13 +11,15 @@ class Contact extends Component {
 		});
 	};
 	handleDelete = () => {
-		this.props.deleteContact();
+		const { contact } = this.props;
+		this.props.deleteContactHandler(contact.id);
 	};
+
 	render() {
-		const { name, email, phone } = this.props.contact;
 		const { showContactInfo } = this.state;
+		const { name, email, phone } = this.props.contact;
 		return (
-			<div className="card card-body mb-3">
+			<div className="card card-body mb-3 contact-card">
 				<h4 className="hide-show">
 					{name} <i onClick={this.handleClick} className="fa fa-sort-down"></i>
 					<i
@@ -36,8 +38,8 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-	contact: PropTypes.object.isRequired
-	// deleteContact: PropTypes.func.isRequired
+	contact: PropTypes.object.isRequired,
+	deleteContactHandler: PropTypes.func.isRequired
 };
 
 export default Contact;

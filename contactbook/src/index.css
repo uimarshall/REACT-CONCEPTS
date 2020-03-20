@@ -11,3 +11,7 @@ body {
     color: red;
     float: right;
 }
+
+.contact-card:hover {
+    background-color: silver;
+}
