@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class Contact extends Component {
 	state = {
@@ -17,7 +18,7 @@ class Contact extends Component {
 
 	render() {
 		const { showContactInfo } = this.state;
-		const { name, email, phone } = this.props.contact;
+		const { name, email, phone, id } = this.props.contact;
 		return (
 			<div className="card card-body mb-3 contact-card">
 				<h4 className="hide-show">
@@ -25,6 +26,9 @@ class Contact extends Component {
 					<i
 						className="fa fa-times delete-contact"
 						onClick={this.handleDelete}></i>
+					<Link to={`contact/edit/${id}`}>
+						<i class="fa fa-pencil edit"></i>
+					</Link>
 				</h4>
 				{showContactInfo ? (
 					<ul className="list-group">

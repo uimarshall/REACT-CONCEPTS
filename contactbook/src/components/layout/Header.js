@@ -12,7 +12,17 @@ const Header = ({ title }) => {
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item">
 							<Link to="/" className="nav-link">
-								Home
+								<i className="fa fa-home mr-1"></i>Home
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/contact/add" className="nav-link">
+								<i className="fa fa-plus mr-1"></i>Add Contact
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/about" className="nav-link">
+								<i className="fa fa-question mr-1"></i> About
 							</Link>
 						</li>
 					</ul>
