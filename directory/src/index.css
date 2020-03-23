@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+}
+
+.hide-show i {
+    cursor: pointer;
+}
+
+.hide-show .delete-contact {
+    cursor: pointer;
+    color: red;
+    float: right;
+}
+
+.hide-show .edit {
+    color: black;
+    margin-right: 1rem;
+    float: right;
+    cursor: pointer;
+}
+
+.contact-card:hover {
+    background-color: silver;
+}
+
+.bg-primary {
+    background-color: #003A3F!important;
+}
+
+.text-primary {
+    color: #93E722!important;
+}
+
+.btn-primary {
+    background-color: #93E722!important;
+}
