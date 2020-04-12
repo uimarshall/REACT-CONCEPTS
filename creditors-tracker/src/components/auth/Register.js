@@ -7,12 +7,17 @@ import PropTypes from "prop-types";
 import { notifyUser } from "../../actions/notifyAction";
 import Alert from "../../utils/Alert";
 
-class Login extends Component {
+class Register extends Component {
 	state = {
 		email: "",
 		password: "",
 	};
-
+	componentWillMount() {
+		const { allowRegistration } = this.props.settings;
+		if (!allowRegistration) {
+			this.props.history.push("/");
+		}
+	}
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value,
@@ -24,13 +29,17 @@ class Login extends Component {
 
 		const { firebase, history, notifyUser } = this.props;
 		const { email, password } = this.state;
+
+		// Register with Firebase
 		firebase
-			.login({
+			.createUser({
 				email,
 				password,
 			})
 			.then(() => history.push("/"))
-			.catch((err) => notifyUser("Invalid login Credentials", "error"));
+			.catch((err) =>
+				notifyUser("A user with this Credentials already exist!", "error")
+			);
 	};
 	render() {
 		const { message, messageType } = this.props.notify;
@@ -45,7 +54,7 @@ class Login extends Component {
 							<h1 className="text-center pb-4 pt-3">
 								<span className="text-primary">
 									<i className="fa fa-lock fa-fw" aria-hidden="true"></i>
-									Login
+									Register
 								</span>
 							</h1>
 							<form onSubmit={this.handleSubmit}>
@@ -73,7 +82,7 @@ class Login extends Component {
 								</div>
 								<input
 									type="submit"
-									value="Login"
+									value="Register"
 									className="btn btn-info btn-block"
 								/>
 							</form>
@@ -85,7 +94,7 @@ class Login extends Component {
 	}
 }
 
-Login.propTypes = {
+Register.propTypes = {
 	firebase: PropTypes.object.isRequired,
 	notify: PropTypes.object.isRequired,
 	notifyUser: PropTypes.func.isRequired,
@@ -96,7 +105,8 @@ export default compose(
 	connect(
 		(state, props) => ({
 			notify: state.notify,
+			settings: state.settings,
 		}),
 		{ notifyUser }
 	)
-)(Login);
+)(Register);
