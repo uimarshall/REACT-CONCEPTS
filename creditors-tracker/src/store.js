@@ -5,7 +5,7 @@ import "firebase/firestore"; // <- needed if using firestore
 import { createStore, combineReducers, compose } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 import { firestoreReducer } from "redux-firestore"; // <- needed if using firestore
-
+import notifyReducer from "./reducers/notifyReducer";
 const firebaseConfig = {
 	apiKey: "AIzaSyDhy18AAyIQBTWW4YbkX8rU9pqel0_JyQI",
 	authDomain: "creditors-tracker.firebaseapp.com",
@@ -29,6 +29,7 @@ firebase.firestore(); // <- needed if using firestore
 const rootReducer = combineReducers({
 	firebase: firebaseReducer,
 	firestore: firestoreReducer, // <- needed if using firestore
+	notify: notifyReducer,
 });
 
 // Create store with reducers and initial state
