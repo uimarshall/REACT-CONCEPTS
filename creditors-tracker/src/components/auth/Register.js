@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase"; //use firebaseConnect for auth
@@ -88,6 +88,12 @@ class Register extends Component {
 							</form>
 						</div>
 					</div>
+					<p className="signup">
+						Already have an account?{" "}
+						<Link to="/login">
+							<span>Login!</span>
+						</Link>
+					</p>
 				</div>
 			</div>
 		);

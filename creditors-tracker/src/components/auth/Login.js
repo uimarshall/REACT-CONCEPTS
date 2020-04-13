@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { Link } from "react-router-dom";
 import { firebaseConnect } from "react-redux-firebase"; //use firebaseConnect for auth
 import PropTypes from "prop-types";
 import { notifyUser } from "../../actions/notifyAction";
@@ -79,6 +80,12 @@ class Login extends Component {
 							</form>
 						</div>
 					</div>
+					<p className="signup">
+						Don't have an account?{" "}
+						<Link to="/register">
+							<span>Sign up!</span>
+						</Link>
+					</p>
 				</div>
 			</div>
 		);
